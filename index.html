@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palyt - Kitchen Stock & Menu Integration</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>Palyt Kitchen Management</h1>
+      <p class="subtitle">Live Kitchen Stock Control & Real-time Menu Availability</p>
+    </div>
+  </header>
+
+  <main class="layout-container">
+    <!-- Part 1: Stock Management -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>1. Kitchen Stock</h2>
+        <span id="stockCountBadge" class="subtitle">15 items</span>
+      </div>
+
+      <div class="toolbar">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search ingredients...">
+        <button id="openAddModalBtn" class="btn">+ Add Ingredient</button>
+      </div>
+
+      <div class="stock-table-wrapper">
+        <table class="stock-table">
+          <thead>
+            <tr>
+              <th>Ingredient</th>
+              <th>In Stock</th>
+              <th>Par Level</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="stockTableBody">
+            <!-- Rendered dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Part 2: Diner Menu Integration -->
+    <section class="panel">
+      <div class="panel-header">
+        <h2>2. Diner Menu</h2>
+        <span class="subtitle">Live Availability & Ordering</span>
+      </div>
+
+      <div id="menuList" class="menu-grid">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="panel-header" style="margin-top: 10px;">
+        <h3 style="font-size: 1rem;">Live Order & Activity Log</h3>
+      </div>
+      <div id="activityLog" class="log-container">
+        <div class="log-entry">System ready. Select a dish to place an order.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Add / Edit Modal -->
+  <div id="ingredientModal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Add Ingredient</h3>
+        <button id="closeModalBtn" class="btn btn-secondary btn-sm">X</button>
+      </div>
+
+      <div id="modalErrors" class="error-list hidden"></div>
+
+      <form id="ingredientForm">
+        <div class="form-group">
+          <label for="modalName">Ingredient Name</label>
+          <input type="text" id="modalName" class="form-control" required placeholder="e.g. Paneer">
+        </div>
+
+        <div class="form-group" style="margin-top: 10px;">
+          <label for="modalQty">Quantity in Stock</label>
+          <input type="number" step="any" id="modalQty" class="form-control" required placeholder="e.g. 1.4">
+        </div>
+
+        <div class="form-group" style="margin-top: 10px;">
+          <label for="modalUnit">Unit</label>
+          <select id="modalUnit" class="form-control">
+            <option value="kg">kg</option>
+            <option value="g">g</option>
+            <option value="l">l</option>
+            <option value="ml">ml</option>
+            <option value="pcs">pcs</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-top: 10px;">
+          <label for="modalPar">Par Level (Replenishment threshold)</label>
+          <input type="number" step="any" id="modalPar" class="form-control" required placeholder="e.g. 0.5">
+        </div>
+
+        <div class="modal-actions" style="margin-top: 16px;">
+          <button type="button" id="cancelModalBtn" class="btn btn-secondary">Cancel</button>
+          <button type="submit" class="btn">Save Ingredient</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
