@@ -1,0 +1,13 @@
+{
+  "name": "palyt-kitchen-stock",
+  "version": "1.0.0",
+  "description": "Kitchen stock management and menu integration",
+  "type": "module",
+  "scripts": {
+    "test": "node --test src/domain.test.js",
+    "start": "npx serve ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
